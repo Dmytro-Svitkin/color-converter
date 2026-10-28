@@ -7,3 +7,7 @@ repository = "https://github.com/Dmytro-Svitkin/color-converter"
 license = "BSD-3-Clause"
 
 [dependencies]
+
+[features]
+default = ["f32_n0u8ix-lut"]
+f32_n0u8ix-lut=[]

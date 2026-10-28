@@ -1,4 +1,6 @@
 #![allow(unused)]
+
+#[cfg(feature="f32_n0u8ix-lut")]
 const F32_N0U8IX:[f32;255]={// Might remove that later, but unlikely. // 255 is a shorthand for explicit `u8::MAX as usize`.
     let mut array:[f32;255]=[0.0;255];
     let mut index_counter:usize=0;
@@ -9,8 +11,14 @@ const F32_N0U8IX:[f32;255]={// Might remove that later, but unlikely. // 255 is 
     array
 };
 
+#[cfg(feature="f32_n0u8ix-lut")]
 const unsafe fn u8_f32_unchecked(value:u8)->f32{
     F32_N0U8IX[value as usize-1]
+}
+
+#[cfg(not(feature="f32_n0u8ix-lut"))]
+const unsafe fn u8_f32_unchecked(value:u8)->f32{
+    value as f32/256.0
 }
 
 const fn u8_f32(value:u8)->Option<f32>{
@@ -93,6 +101,5 @@ const fn f32_u16_soft(value:f32)->u16{
 
 #[inline(always)]
 const fn is_valid_f32(value:f32)->bool{
-    if value.is_nan()||value.is_infinite()||value.is_subnormal(){return false}
-    true
+    !(value.is_nan()||value.is_infinite()||value.is_subnormal())
 }
