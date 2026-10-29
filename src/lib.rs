@@ -1,6 +1,7 @@
 #![no_std]
 
 mod utils;
+mod rgb_rgba;
 
 #[derive(Debug,Clone,Copy,PartialEq)]
 pub struct Color<T>{
@@ -11,14 +12,6 @@ pub struct Color<T>{
 }
 
 impl Color<u8>{
-    pub const fn from_u8_rgba(red:u8,green:u8,blue:u8,alpha:u8)->Self{
-        Self{red,blue,green,alpha}
-    }
-
-    pub const fn from_u8_rgb(red:u8,green:u8,blue:u8)->Self{
-        Self::from_u8_rgba(red,green,blue,255)
-    }
-
     pub const fn transparent_black()->Self{
         Self::from_u8_rgba(0,0,0,0)
     }

@@ -1,4 +1,4 @@
-use color_converter::*;
+use color_converter::Color;
 
 #[test]
 fn test(){
