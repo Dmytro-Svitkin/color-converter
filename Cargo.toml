@@ -1,7 +1,7 @@
 [package]
 name = "color-converter"
 version = "0.0.0"
-publish = false
+description = "Simple Color Converter"
 edition = "2024"
 repository = "https://github.com/Dmytro-Svitkin/color-converter"
 license = "BSD-3-Clause"
